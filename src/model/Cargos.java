@@ -1,10 +1,10 @@
 package model;
 
-public class Role {
+public class Cargos {
     private int id;
     private String nome;
 
-    public Role(String nome) {
+    public Cargos(String nome) {
         this.nome = nome;
     }
 
