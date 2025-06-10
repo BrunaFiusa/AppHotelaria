@@ -4,10 +4,8 @@ requisições; se os parametros como IP, nome de usuario, senha
 e nome do banco de dados estão corretos, utilizando-se o driver JDBC para MYSQL
  */
 
-import dao.AdicionaisDAO;
-import dao.ClientesDAO;
-import dao.QuartosDAO;
-import dao.UsuariosDAO;
+import dao.*;
+import model.Cargos;
 import model.Clientes;
 import model.Usuarios;
 import java.sql.Connection;
@@ -20,19 +18,28 @@ public class TesteConexaoDB {
         if (condb != null) {
             System.out.println("Conexão estabelecida com sucesso!");
             try {
-                UsuariosDAO usuariosDAO = new UsuariosDAO();
-                usuariosDAO.inserirUsuario();
+//                UsuariosDAO usuariosDAO = new UsuariosDAO();
+//                usuariosDAO.atualizarUsuario();
+//
+                ClientesDAO clientesDAO = new ClientesDAO();
+                clientesDAO.atualizarClientes();
 
-               ClientesDAO clientesDAO = new ClientesDAO();
-                clientesDAO.inserirCliente();
+//                QuartosDAO quartosDAO = new QuartosDAO();
+//                quartosDAO.atualizarQuartos();
+//
+//                AdicionaisDAO adicionaisDAO = new AdicionaisDAO();
+//                adicionaisDAO.atualizarAdicionais();
+//
+//                PedidosDAO pedidosDAO = new PedidosDAO();
+//                pedidosDAO.atualizarPedidos();
+//
+//                ReservasDAO reservasDAO = new ReservasDAO();
+//                reservasDAO.atualizarReservas();
 
-               QuartosDAO quartosDAO = new QuartosDAO();
-              quartosDAO.inserirQuartos();
+//                CargosDAO cargosDAO = new CargosDAO();
+//                cargosDAO.atualizarCargos();
 
-                AdicionaisDAO adicionaisDAO = new AdicionaisDAO();
-               adicionaisDAO.inserirAdicionais();
-
-                System.out.println("Usuario Inserido com sucesso!");
+                System.out.println("Informações deletadas com sucesso!");
 
                 condb.close();
                 System.out.println("Conexão encerrada!");

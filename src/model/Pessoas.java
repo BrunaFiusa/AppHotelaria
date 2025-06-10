@@ -1,9 +1,9 @@
 package model;
 
-public class Pessoa {
+public class Pessoas {
     private String nome, email;
 
-    public Pessoa(String nome, String email) {
+    public Pessoas(String nome, String email) {
         this.nome = nome;
         this.email = email;
     }

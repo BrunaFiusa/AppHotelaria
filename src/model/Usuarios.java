@@ -1,6 +1,6 @@
 package model;
 
-public class Usuarios extends Pessoa {
+public class Usuarios extends Pessoas {
     private int id;
     private String senha;
     private int role_id;

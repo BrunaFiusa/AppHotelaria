@@ -19,10 +19,46 @@ public class AdicionaisDAO {
             novoAdicional.setDouble(2, 300);
 
             int linhaAfetada = novoAdicional.executeUpdate();
+            condb.close();
             return linhaAfetada > 0;
         } catch (Exception erro) {
             System.out.println("Erro ao inserir adicionais: " + erro);
             return false;
         }
     }
+
+    public boolean deletarAdicionais() {
+        try {
+            Connection condb = conexao.conectar();
+            PreparedStatement deletarAdicionais = condb.prepareStatement("DELETE FROM adicionais WHERE id = ?;");
+            //Setar os parâmetros
+            deletarAdicionais.setInt(1, 2);
+
+            int linhaAfetada = deletarAdicionais.executeUpdate();
+            condb.close();
+            return linhaAfetada > 0;
+        } catch (Exception erro) {
+            System.out.println("Erro ao deletar usuario: " + erro);
+            return false;
+        }
+    }
+
+    public boolean atualizarAdicionais() {
+        try {
+            Connection condb = conexao.conectar();
+            PreparedStatement atualizarAdicionais = condb.prepareStatement("UPDATE adicionais SET nome = ?, preco = ? WHERE id = ?;");
+            //Setar os parâmetros
+            atualizarAdicionais.setString(1, "banheira");
+            atualizarAdicionais.setDouble(2, 300);
+            atualizarAdicionais.setInt(3, 3);
+
+            int linhaAfetada = atualizarAdicionais.executeUpdate();
+            condb.close();
+            return linhaAfetada > 0;
+        } catch (Exception erro) {
+            System.out.println("Erro ao deletar usuario: " + erro);
+            return false;
+        }
+    }
+
 }

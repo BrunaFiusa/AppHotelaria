@@ -1,14 +1,14 @@
 package model;
 import java.util.Date;
 
-public class Pedido {
+public class Pedidos {
     private int id;
     private int usuario_id;
     private int cliente_id;
     private Date data;
     private String pagamento;
 
-    public Pedido(int usuario_id, int cliente_id, Date data, String pagamento) {
+    public Pedidos(int usuario_id, int cliente_id, Date data, String pagamento) {
         this.usuario_id = usuario_id;
         this.cliente_id = cliente_id;
         this.data = data;
