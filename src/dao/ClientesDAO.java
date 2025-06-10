@@ -38,7 +38,7 @@ public class ClientesDAO {
             condb.close();
             return linhaAfetada > 0;
         } catch (Exception erro) {
-            System.out.println("Erro ao deletar usuario: " + erro);
+            System.out.println("Erro ao deletar cliente: " + erro);
             return false;
         }
     }
@@ -58,7 +58,7 @@ public class ClientesDAO {
             condb.close();
             return linhaAfetada > 0;
         } catch (Exception erro) {
-            System.out.println("Erro ao deletar usuario: " + erro);
+            System.out.println("Erro ao atualizar cliente: " + erro);
             return false;
         }
     }

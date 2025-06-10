@@ -40,7 +40,7 @@ public class QuartosDAO {
             condb.close();
             return linhaAfetada > 0;
         } catch (Exception erro) {
-            System.out.println("Erro ao deletar usuario: " + erro);
+            System.out.println("Erro ao deletar quarto: " + erro);
             return false;
         }
     }
@@ -62,7 +62,7 @@ public class QuartosDAO {
             condb.close();
             return linhaAfetada > 0;
         } catch (Exception erro) {
-            System.out.println("Erro ao deletar usuario: " + erro);
+            System.out.println("Erro ao atualizar quarto: " + erro);
             return false;
         }
     }

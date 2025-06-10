@@ -21,8 +21,8 @@ public class TesteConexaoDB {
 //                UsuariosDAO usuariosDAO = new UsuariosDAO();
 //                usuariosDAO.atualizarUsuario();
 //
-                ClientesDAO clientesDAO = new ClientesDAO();
-                clientesDAO.atualizarClientes();
+//                ClientesDAO clientesDAO = new ClientesDAO();
+//                clientesDAO.atualizarClientes();
 
 //                QuartosDAO quartosDAO = new QuartosDAO();
 //                quartosDAO.atualizarQuartos();
@@ -30,16 +30,16 @@ public class TesteConexaoDB {
 //                AdicionaisDAO adicionaisDAO = new AdicionaisDAO();
 //                adicionaisDAO.atualizarAdicionais();
 //
-//                PedidosDAO pedidosDAO = new PedidosDAO();
-//                pedidosDAO.atualizarPedidos();
+                PedidosDAO pedidosDAO = new PedidosDAO();
+                pedidosDAO.inserirPedidos();
 //
 //                ReservasDAO reservasDAO = new ReservasDAO();
-//                reservasDAO.atualizarReservas();
+//                reservasDAO.deletarReservas();
 
 //                CargosDAO cargosDAO = new CargosDAO();
-//                cargosDAO.atualizarCargos();
+//                cargosDAO.deletarCargos();
 
-                System.out.println("Informações deletadas com sucesso!");
+                System.out.println("Modificação feita com sucesso!");
 
                 condb.close();
                 System.out.println("Conexão encerrada!");

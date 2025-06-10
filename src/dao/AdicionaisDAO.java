@@ -22,7 +22,7 @@ public class AdicionaisDAO {
             condb.close();
             return linhaAfetada > 0;
         } catch (Exception erro) {
-            System.out.println("Erro ao inserir adicionais: " + erro);
+            System.out.println("Erro ao inserir adicional: " + erro);
             return false;
         }
     }
@@ -38,7 +38,7 @@ public class AdicionaisDAO {
             condb.close();
             return linhaAfetada > 0;
         } catch (Exception erro) {
-            System.out.println("Erro ao deletar usuario: " + erro);
+            System.out.println("Erro ao deletar adicional: " + erro);
             return false;
         }
     }
@@ -56,7 +56,7 @@ public class AdicionaisDAO {
             condb.close();
             return linhaAfetada > 0;
         } catch (Exception erro) {
-            System.out.println("Erro ao deletar usuario: " + erro);
+            System.out.println("Erro ao atualizar adicional: " + erro);
             return false;
         }
     }

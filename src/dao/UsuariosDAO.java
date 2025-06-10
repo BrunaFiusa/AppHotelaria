@@ -58,7 +58,7 @@ public class UsuariosDAO {
             condb.close();
             return linhaAfetada > 0;
         } catch (Exception erro) {
-            System.out.println("Erro ao deletar usuario: " + erro);
+            System.out.println("Erro ao atualizar usuario: " + erro);
             return false;
         }
     }
