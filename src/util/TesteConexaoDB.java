@@ -18,26 +18,26 @@ public class TesteConexaoDB {
         if (condb != null) {
             System.out.println("Conexão estabelecida com sucesso!");
             try {
-//                UsuariosDAO usuariosDAO = new UsuariosDAO();
-//                usuariosDAO.atualizarUsuario();
+                UsuariosDAO usuariosDAO = new UsuariosDAO();
+                usuariosDAO.pesquisarUsuario();
 //
 //                ClientesDAO clientesDAO = new ClientesDAO();
-//                clientesDAO.atualizarClientes();
+//                clientesDAO.pesquisarCientes();
 
 //                QuartosDAO quartosDAO = new QuartosDAO();
-//                quartosDAO.atualizarQuartos();
+//                quartosDAO.pesquisarQuarto();
 //
 //                AdicionaisDAO adicionaisDAO = new AdicionaisDAO();
 //                adicionaisDAO.atualizarAdicionais();
 //
-                PedidosDAO pedidosDAO = new PedidosDAO();
-                pedidosDAO.inserirPedidos();
+//                PedidosDAO pedidosDAO = new PedidosDAO();
+//                pedidosDAO.pesquisarPedidos();
 //
 //                ReservasDAO reservasDAO = new ReservasDAO();
-//                reservasDAO.deletarReservas();
+//                reservasDAO.pesquisarReservas();
 
 //                CargosDAO cargosDAO = new CargosDAO();
-//                cargosDAO.deletarCargos();
+//                cargosDAO.pesquisarCargos();
 
                 System.out.println("Modificação feita com sucesso!");
 

@@ -2,7 +2,9 @@ package dao;
 
 import util.Conexao;
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 
 public class PedidosDAO {
     //Objeto para instanciar classe Conexao paea requisitar acesso ao DB
@@ -58,6 +60,24 @@ public class PedidosDAO {
         } catch (Exception erro) {
             System.out.println("Erro ao atualizar: " + erro);
             return false;
+        }
+    }
+
+    public void pesquisarPedidos(){
+        try {
+            Connection condb = conexao.conectar();
+            PreparedStatement buscarPedido = condb.prepareStatement("SELECT * " + "FROM pedidos where id = ?");
+            buscarPedido.setInt(1,7);
+            ResultSet resultSet = buscarPedido.executeQuery();
+
+            while (resultSet.next()){
+                Date data = resultSet.getDate("data");
+                String pagamento = resultSet.getString("pagamento");
+                System.out.println("data: " + data + "\npagamento: " + pagamento);
+            }
+            condb.close();
+        } catch (Exception erro) {
+            System.out.println("Erro ao pesquisar pedidos: " + erro);
         }
     }
 }

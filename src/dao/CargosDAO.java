@@ -3,6 +3,7 @@ package dao;
 import util.Conexao;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 
 public class CargosDAO {
     //Objeto para instanciar classe Conexao paea requisitar acesso ao DB
@@ -54,6 +55,23 @@ public class CargosDAO {
         } catch (Exception erro) {
             System.out.println("Erro ao atualizar cargo: " + erro);
             return false;
+        }
+    }
+
+    public void pesquisarCargos(){
+        try {
+            Connection condb = conexao.conectar();
+            PreparedStatement buscarCargo = condb.prepareStatement("SELECT * " + "FROM cargos where id = ?");
+            buscarCargo.setInt(1,1);
+            ResultSet resultSet = buscarCargo.executeQuery();
+
+            while (resultSet.next()){
+                String nome = resultSet.getString("nome");
+                System.out.println("nome: " + nome);
+            }
+            condb.close();
+        } catch (Exception erro) {
+            System.out.println("Erro ao pesquisar cargos: " + erro);
         }
     }
 }

@@ -2,7 +2,9 @@ package dao;
 
 import util.Conexao;
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 
 public class ClientesDAO {
     //Objeto para instanciar classe Conexao paea requisitar acesso ao DB
@@ -63,4 +65,23 @@ public class ClientesDAO {
         }
     }
 
+    public void pesquisarCientes(){
+        try {
+            Connection condb = conexao.conectar();
+            PreparedStatement buscarClientes = condb.prepareStatement("SELECT * " + "FROM clientes where id = ?");
+            buscarClientes.setInt(1,3);
+            ResultSet resultSet = buscarClientes.executeQuery();
+
+            while (resultSet.next()){
+                String nome = resultSet.getString("nome");
+                String cpf = resultSet.getString("cpf");
+                String telefone = resultSet.getString("telefone");
+                String email = resultSet.getString("email");
+                System.out.println("nome: " + nome + "\ncpf: " + cpf + "\ntelefone: " + telefone + "\nemail: " + email);
+            }
+            condb.close();
+        } catch (Exception erro) {
+            System.out.println("Erro ao pesquisar clientes: " + erro);
+        }
+    }
 }
