@@ -13,33 +13,29 @@ import java.sql.Connection;
 public class TesteConexaoDB {
     public static void main(String[] args) {
         Conexao conexao = new Conexao();
+
+        Usuarios usuario = new Usuarios("Osana", "osanaam@gmail.com", "121274", 1);
+
         Connection condb = conexao.conectar();
 
         if (condb != null) {
             System.out.println("Conexão estabelecida com sucesso!");
             try {
                 UsuariosDAO usuariosDAO = new UsuariosDAO();
-                usuariosDAO.pesquisarUsuario();
+                usuariosDAO.autenticarUsuario(usuario);
 //
 //                ClientesDAO clientesDAO = new ClientesDAO();
 //                clientesDAO.pesquisarCientes();
-
 //                QuartosDAO quartosDAO = new QuartosDAO();
 //                quartosDAO.pesquisarQuarto();
-//
 //                AdicionaisDAO adicionaisDAO = new AdicionaisDAO();
 //                adicionaisDAO.atualizarAdicionais();
-//
 //                PedidosDAO pedidosDAO = new PedidosDAO();
 //                pedidosDAO.pesquisarPedidos();
-//
 //                ReservasDAO reservasDAO = new ReservasDAO();
 //                reservasDAO.pesquisarReservas();
-
 //                CargosDAO cargosDAO = new CargosDAO();
 //                cargosDAO.pesquisarCargos();
-
-                System.out.println("Modificação feita com sucesso!");
 
                 condb.close();
                 System.out.println("Conexão encerrada!");

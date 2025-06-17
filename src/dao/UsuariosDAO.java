@@ -1,5 +1,6 @@
 package dao;
 
+import model.Usuarios;
 import util.Conexao;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -64,28 +65,17 @@ public class UsuariosDAO {
         }
     }
 
-    public void pesquisarUsuario(){
+    public void autenticarUsuario(Usuarios usuario) {
         try {
             Connection condb = conexao.conectar();
-            PreparedStatement buscarUsuario = condb.prepareStatement("SELECT \n" +
-                    "\tusuarios.nome,\n" +
-                    "    usuarios.email,\n" +
-                    "    cargos.nome\n" +
-                    "FROM \n" +
-                    "\tusuarios\n" +
-                    "INNER JOIN\n" +
-                    "\tcargos\n" +
-                    "ON\n" +
-                    "\tusuarios.cargo_id = cargos.id\n" +
-                    "WHERE usuarios.id = ?");
-            buscarUsuario.setInt(1,3);
-            ResultSet resultSet = buscarUsuario.executeQuery();
+            PreparedStatement autenticarUsuario = condb.prepareStatement("SELECT nome FROM usuarios WHERE email = ? AND senha = md5(?);");
+            autenticarUsuario.setString(1, usuario.getEmail());
+            autenticarUsuario.setString(2, usuario.getSenha());
+            ResultSet resultSet = autenticarUsuario.executeQuery();
 
             while (resultSet.next()){
                 String nome = resultSet.getString("nome");
-                String email = resultSet.getString("email");
-                String cargo = resultSet.getString("cargos.nome");
-                System.out.println("nome: " + nome + "\nemail: " + email + "\ncargo: " + cargo);
+                System.out.println("Nome: " + nome);
             }
             condb.close();
         } catch (Exception erro) {
