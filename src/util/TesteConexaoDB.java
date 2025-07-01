@@ -4,6 +4,7 @@ requisições; se os parametros como IP, nome de usuario, senha
 e nome do banco de dados estão corretos, utilizando-se o driver JDBC para MYSQL
  */
 
+import controller.UsuariosController;
 import dao.*;
 import model.Cargos;
 import model.Clientes;
@@ -13,30 +14,14 @@ import java.sql.Connection;
 public class TesteConexaoDB {
     public static void main(String[] args) {
         Conexao conexao = new Conexao();
-
-        Usuarios usuario = new Usuarios("Osana", "osanaam@gmail.com", "121274", 1);
-
+        UsuariosController usuariosController = new UsuariosController();
         Connection condb = conexao.conectar();
 
         if (condb != null) {
             System.out.println("Conexão estabelecida com sucesso!");
             try {
-                UsuariosDAO usuariosDAO = new UsuariosDAO();
-                usuariosDAO.autenticarUsuario(usuario);
-//
-//                ClientesDAO clientesDAO = new ClientesDAO();
-//                clientesDAO.pesquisarCientes();
-//                QuartosDAO quartosDAO = new QuartosDAO();
-//                quartosDAO.pesquisarQuarto();
-//                AdicionaisDAO adicionaisDAO = new AdicionaisDAO();
-//                adicionaisDAO.atualizarAdicionais();
-//                PedidosDAO pedidosDAO = new PedidosDAO();
-//                pedidosDAO.pesquisarPedidos();
-//                ReservasDAO reservasDAO = new ReservasDAO();
-//                reservasDAO.pesquisarReservas();
-//                CargosDAO cargosDAO = new CargosDAO();
-//                cargosDAO.pesquisarCargos();
-
+                //Testando a autenticação de um usuário
+                usuariosController.verificarCredenciais("bruna.fiusa2006@gmail.com", "251173");
                 condb.close();
                 System.out.println("Conexão encerrada!");
             } catch (Exception erro) {
