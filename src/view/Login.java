@@ -1,5 +1,6 @@
 package view;
 
+import controller.UsuariosController;
 import javafx.application.Application;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -16,8 +17,8 @@ public class Login extends Application {
     public void start(Stage janela) throws Exception {
         Image imgIcon = new Image(getClass().getResourceAsStream("/view/resources/img/logo.png"));
         Image hotel = new Image(getClass().getResourceAsStream("/view/resources/img/fachadaHotel.jpg"));
-        Image olhoAberto = new Image(getClass().getResourceAsStream("/view/resources/img/olhoAberto.png"));
-        Image olhoFechado = new Image(getClass().getResourceAsStream("/view/resources/img/olhoFechado.png"));
+        Image olhoAberto = new Image(getClass().getResourceAsStream("/view/resources/img/olhoabre.png"));
+        Image olhoFechado = new Image(getClass().getResourceAsStream("/view/resources/img/olhofecha.png"));
 
         ImageView olhoAbertoView = new ImageView(olhoAberto);
         olhoAbertoView.setFitHeight(20);
@@ -43,8 +44,8 @@ public class Login extends Application {
 
         ImageView hotelView = new ImageView(hotel);
         hotelView.setStyle("color: white");
-        hotelView.setFitHeight(400);
-        hotelView.setFitWidth(600);
+        hotelView.setFitHeight(600);
+        hotelView.setFitWidth(750);
 
         Label lblTitulo = new Label("User Login");
         lblTitulo.setFont(Font.font("Arial", FontWeight.BOLD, 15));
@@ -91,6 +92,25 @@ public class Login extends Application {
             }
         });
 
+        btnEntrar.setOnAction(evento -> {
+            String email = txtEmail.getText();
+            String senha = passSenha.isVisible() ? passSenha.getText() : txtsenha.getText();
+
+            UsuariosController usuariosController = new UsuariosController();
+            boolean loginSucesso = usuariosController.verificarCredenciais(email, senha);
+            if (loginSucesso) {
+                System.out.println("Login efetuado com sucesso!");
+                CadCliente cadCliente = new CadCliente();
+                try {
+                    cadCliente.start(janela);
+                } catch (Exception e) {
+                    throw new RuntimeException(e);
+                }
+            } else {
+                System.out.println("Login inválido!");
+            }
+        });
+
         HBox senhaBox = new HBox(txtsenha, passSenha, olhoIcone);
         senhaBox.setSpacing(5);
         senhaBox.setAlignment(Pos.CENTER_LEFT);
@@ -112,7 +132,7 @@ public class Login extends Application {
         StackPane root = new StackPane(hotelView, layout);
         root.setStyle("-fx-background-size: cover;");
 
-        Scene scene = new Scene(root, 600, 400);
+        Scene scene = new Scene(root, 750, 600);
         janela.setTitle("Grand Hotel");
         janela.getIcons().add(imgIcon);
         janela.setScene(scene);
