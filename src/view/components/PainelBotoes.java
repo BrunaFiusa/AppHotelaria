@@ -11,6 +11,10 @@ import javafx.scene.text.Font;
 
 public class PainelBotoes extends HBox {
 
+    public Button btnCad = new Button("Cadastrar");
+    public Button btnUp = new Button("Atualizar");
+    public Button btnDel = new Button("Excluir");
+
     public PainelBotoes() {
         Image imgBtnCad = new Image(getClass().getResourceAsStream("/view/resources/img/mais.png"));
         Image imgBtnUp = new Image(getClass().getResourceAsStream("/view/resources/img/atualizar.png"));
@@ -28,11 +32,8 @@ public class PainelBotoes extends HBox {
         viewImgBtnDel.setFitHeight(20);
 
         //Criar um botão com instrução/texto e imagem:
-        Button btnCad = new Button("Cadastrar", viewImgBtnCad);
         btnCad.setStyle("-fx-background-color: transparent;");
-        Button btnUp = new Button("Atualizar", viewImgBtnUp);
         btnUp.setStyle("-fx-background-color: transparent");
-        Button btnDel = new Button("Excluir", viewImgBtnDel);
         btnDel.setStyle("-fx-background-color: transparent");
 
         btnCad.setGraphic(viewImgBtnCad);

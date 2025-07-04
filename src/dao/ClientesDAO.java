@@ -1,5 +1,6 @@
 package dao;
 
+import model.Clientes;
 import util.Conexao;
 import java.sql.Connection;
 import java.sql.Date;
@@ -10,15 +11,15 @@ public class ClientesDAO {
     //Objeto para instanciar classe Conexao paea requisitar acesso ao DB
     private Conexao conexao = new Conexao();
 
-    public boolean inserirCliente() {
+    public boolean inserirCliente(Clientes cliente) {
         try {
             Connection condb = conexao.conectar();
             PreparedStatement novoCliente = condb.prepareStatement("INSERT INTO clientes" + "(nome, cpf, telefone, email) VALUES (?, ?, ?, ?);");
             //Setar os parâmetros
-            novoCliente.setString(1, "Pamela");
-            novoCliente.setString(2, "53901248598");
-            novoCliente.setString(3, "(15)99898-9888");
-            novoCliente.setString(4, "pamela.pereto@gmail.com");
+            novoCliente.setString(1, cliente.getNome());
+            novoCliente.setString(2, cliente.getCpf());
+            novoCliente.setString(3, cliente.getTelefone());
+            novoCliente.setString(4, cliente.getEmail());
 
             int linhaAfetada = novoCliente.executeUpdate();
             condb.close();

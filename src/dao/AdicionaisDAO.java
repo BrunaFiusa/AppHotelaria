@@ -1,5 +1,6 @@
 package dao;
 
+import model.Adicionais;
 import util.Conexao;
 
 import java.sql.Connection;
@@ -10,13 +11,13 @@ public class AdicionaisDAO {
     //Objeto para instanciar classe Conexao paea requisitar acesso ao DB
     private Conexao conexao = new Conexao();
 
-    public boolean inserirAdicionais() {
+    public boolean inserirAdicionais(Adicionais adicionais) {
         try {
             Connection condb = conexao.conectar();
             PreparedStatement novoAdicional = condb.prepareStatement("INSERT INTO adicionais" + "(nome, preco) VALUES (?, ?);");
             //Setar os parâmetros
-            novoAdicional.setString(1, "banheira");
-            novoAdicional.setDouble(2, 300);
+            novoAdicional.setString(1, adicionais.getNome());
+            novoAdicional.setDouble(2, adicionais.getPreco());
 
             int linhaAfetada = novoAdicional.executeUpdate();
             condb.close();

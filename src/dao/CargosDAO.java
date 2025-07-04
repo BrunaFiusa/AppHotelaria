@@ -1,5 +1,6 @@
 package dao;
 
+import model.Cargos;
 import util.Conexao;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -9,12 +10,12 @@ public class CargosDAO {
     //Objeto para instanciar classe Conexao paea requisitar acesso ao DB
     private Conexao conexao = new Conexao();
 
-    public boolean inserirCagos() {
+    public boolean inserirCagos(Cargos cargo) {
         try {
             Connection condb = conexao.conectar();
             PreparedStatement novoCargo = condb.prepareStatement("INSERT INTO cargos" + "(nome) VALUES (?);");
             //Setar os parâmetros
-            novoCargo.setString(1, "Camareiro");
+            novoCargo.setString(1, cargo.getNome());
 
             int linhaAfetada = novoCargo.executeUpdate();
             condb.close();

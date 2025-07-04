@@ -10,15 +10,15 @@ public class UsuariosDAO {
     //Objeto para instanciar classe Conexao paea requisitar acesso ao DB
     private Conexao conexao = new Conexao();
 
-    public boolean inserirUsuario() {
+    public boolean inserirUsuario(Usuarios usuario) {
         try {
             Connection condb = conexao.conectar();
             PreparedStatement novoUsuario = condb.prepareStatement("INSERT INTO usuarios" + "(nome, email, senha, cargo_id) VALUES (?, ?, md5(?), ?);");
             //Setar os parâmetros
-            novoUsuario.setString(1, "Pamela");
-            novoUsuario.setString(2, "pamela.pereto@gmail.com");
-            novoUsuario.setString(3, "123");
-            novoUsuario.setInt(4, 4);
+            novoUsuario.setString(1, usuario.getNome());
+            novoUsuario.setString(2, usuario.getEmail());
+            novoUsuario.setString(3, usuario.getSenha());
+            novoUsuario.setInt(4, usuario.getCargo_id());
 
             int linhaAfetada = novoUsuario.executeUpdate();
             condb.close();

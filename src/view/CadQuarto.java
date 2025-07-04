@@ -1,5 +1,6 @@
 package view;
 
+import controller.QuartosController;
 import javafx.application.Application;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -49,7 +50,7 @@ public class CadQuarto extends Application {
         Spinner<Integer> qtdCamaCasal = new Spinner (0,10,1);
 
         Label lblCamaSolteiro = new Label("Cama de Solteiro: ");
-        Spinner qtdCamaSolteiro = new Spinner(0, 10, 1);
+        Spinner<Integer> qtdCamaSolteiro = new Spinner(0, 10, 1);
 
         Label lblPreco = new Label("Preço: ");
         TextField txtPreco = criarMascaraCampo("R$ #################");
@@ -81,6 +82,31 @@ public class CadQuarto extends Application {
         formGrid.setHgap(10);
         formGrid.setVgap(10);
         formGrid.setAlignment(Pos.CENTER);
+
+        painelBotoes.btnCad.setOnAction(evento -> {
+            String nome = txtNome.getText();
+            String num = txtNum.getText();
+            double preco = Double.parseDouble(txtPreco.getText());
+            int camaCasal = qtdCamaCasal.getValue();
+            int camaSolteiro = qtdCamaSolteiro.getValue();
+
+            String disponivel = (String) boxDisponivel.getSelectionModel().getSelectedItem();
+            Boolean isDisponivel;
+            if (disponivel.equals("Sim")) {
+                isDisponivel = true;
+            } else {
+                isDisponivel = false;
+            }
+
+            QuartosController quartosController = new QuartosController();
+
+            boolean sucessoInsercao = quartosController.verificarInfosQuartos(nome, num, camaCasal, camaSolteiro, preco, isDisponivel);
+            if (sucessoInsercao) {
+                System.out.println("Quarto cadastrado com sucesso!");
+            } else {
+                System.out.println("Não foi possivel efetuar o cadastro do quarto!");
+            }
+        });
 
         mainPane.setStyle("-fx-background-color: lightgray");
 

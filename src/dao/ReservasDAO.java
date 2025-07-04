@@ -1,5 +1,6 @@
 package dao;
 
+import model.Reserva;
 import util.Conexao;
 
 import java.sql.Connection;
